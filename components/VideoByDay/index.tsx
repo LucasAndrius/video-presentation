@@ -1,41 +1,42 @@
-import styles from './VideoByDay.module.css'
+import styles from './VideoByDay.module.css';
 
 export const VideoByDay = () => {
-    const today = new Date();
-    const dayOfWeek = today.getDay();
-    console.log(dayOfWeek)
-    
-    let videoToShow = '';
+  const now = new Date();
+  const userDayOfWeek = now.toLocaleDateString(undefined, { weekday: 'long' }); // Obtém o dia da semana local do navegador do usuário
 
-    switch(dayOfWeek) {
-        case 0:
-            videoToShow = 'assets/videos/domingo.mp4';
-            break;
-        case 1: videoToShow = 'assets/videos/segundafeira.mp4';
-            break;
-        case 2: videoToShow = 'assets/videos/tercafeira.mp4';
-            break;
-        case 3: videoToShow = 'assets/videos/quartafeira.mp4';
-            break;
-        case 4: videoToShow = 'assets/videos/quintafeira.mp4';
-            break;
-        case 5: videoToShow = 'assets/videos/sextafeira.mp4';
-            break;
-        case 6: videoToShow = 'assets/videos/sabado.mp4';
-            break;
-        case 7: videoToShow = 'assets/videos/domingo.mp4'
-            break;
-        default:
-            videoToShow = 'assets/videos/default.mp4'
-    }
+  console.log(userDayOfWeek);
 
-    return (
-        <div>
-            <video 
-                src={videoToShow} 
-                controls
-                className={styles.video}
-            />
-        </div>
-    )
-}
+  let videoToShow = '';
+
+  switch (userDayOfWeek) {
+    case 'domingo':
+      videoToShow = 'assets/videos/domingo.mp4';
+      break;
+    case 'segunda':
+      videoToShow = 'assets/videos/segundafeira.mp4';
+      break;
+    case 'terça':
+      videoToShow = 'assets/videos/tercafeira.mp4';
+      break;
+    case 'quarta':
+      videoToShow = 'assets/videos/quartafeira.mp4';
+      break;
+    case 'quinta':
+      videoToShow = 'assets/videos/quintafeira.mp4';
+      break;
+    case 'sexta':
+      videoToShow = 'assets/videos/sextafeira.mp4';
+      break;
+    case 'sábado':
+      videoToShow = 'assets/videos/sabado.mp4';
+      break;
+    default:
+      videoToShow = 'assets/videos/default.mp4';
+  }
+
+  return (
+    <div>
+      <video src={videoToShow} controls className={styles.video} />
+    </div>
+  );
+};
